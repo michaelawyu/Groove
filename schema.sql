@@ -26,9 +26,9 @@ comment_id int,
 mid	int,	
 time	TIMESTAMP,	
 PRIMARY	KEY(uuid,	comment_id,mid),	
-FOREIGN	KEY	uuid	REFERENCES	Users,	
-FOREIGN	KEY	mid	REFERENCES	Music,	
-FOREIGN	KEY	comment_id	REFERENCES	Comments)	;
+FOREIGN	KEY	(uuid)	REFERENCES	Users,	
+FOREIGN	KEY	(mid)	REFERENCES	Music,	
+FOREIGN	KEY	(comment_id)	REFERENCES	Comments)	;
 
 
 CREATE	TABLE	STORED_ON	(medium_type	text,	
