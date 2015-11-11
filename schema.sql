@@ -16,15 +16,15 @@ CREATE	TABLE	Users(name	text,
 uuid	int,	
 PRIMARY	KEY	(uuid))	;
 
-CREATE	TABLE	User_Comments	(content	text,	
+CREATE	TABLE	User_Comments	(content text,	
 comment_id	int,	
 stars	int,	
 PRIMARY	KEY	(comment_id));
 
-CREATE	TABLE	Post(uuid	int,	
-comment_id	int,	
+CREATE	TABLE	Post(uuid int,	
+comment_id int,	
 mid	int,	
-Eme	TIMESTAMP,	
+time	TIMESTAMP,	
 PRIMARY	KEY(uuid,	comment_id,mid),	
 FOREIGN	KEY	uuid	REFERENCES	Users,	
 FOREIGN	KEY	mid	REFERENCES	Music,	
