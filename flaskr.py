@@ -9,6 +9,10 @@ def index():
 def about():
 	return render_template('about.html')
 
+@app.route('/music')
+def music():
+	return render_template('music.html')
+
 @app.route('/test')
 def test():
 	testList=[42,50,12,25,26,37]
