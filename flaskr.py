@@ -5,6 +5,10 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
+@app.route('/about')
+def about():
+	return render_template('about.html')
+
 @app.route('/test')
 def test():
 	testList=[42,50,12,25,26,37]

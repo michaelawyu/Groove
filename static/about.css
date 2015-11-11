@@ -1,0 +1,123 @@
+body {
+	background-image: url("Background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: left top;
+	background-size: 100%;
+}
+div#AboutText{
+	width: 500px;
+	height: 500px;
+	/*border-style: solid;
+	border-color: white;
+	border-width: 2px;*/
+	position: absolute;
+	top: 81%;
+	left: 50%;
+	margin-top: -250px;
+	margin-left: -250px;
+	z-index: 20;
+}
+h1#First{
+	color: white;
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	top:15px;
+	left: 128px;
+}
+h2#Third{
+	color: white;
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	top: 220px;
+	left: 215px;
+}
+p#Second{
+	color: white;
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	top: 80px;
+
+}
+img#Prototype{
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	margin-top: -126px;
+	margin-left: -111.5px;
+	z-index: 20;
+
+}
+div#header{
+	background-color: hsla(10,0%,0%,0.7);
+	padding: 10px;
+	width: 100%;
+	height: 46px;
+	margin: 0px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 30;
+}
+a.headerlink:link{
+	text-decoration: none;
+	color: white;
+}
+a.headerlink:visited{
+	text-decoration: none;
+	color: white;
+}
+li{
+	font-family: "PingFang SC", Helvetica;
+	font-size: 18px;
+}
+li#Music{
+	display: inline;
+	padding: 5px;
+	position: fixed;
+	top: 15px;
+	left: 150px;
+}
+li#Artist{
+	display: inline;
+	padding: 5px;
+	position: fixed;
+	top: 15px;
+	left: 275px;
+}
+li#PD{
+	display: inline;
+	padding: 5px;
+	position: fixed;
+	top: 15px;
+	left: 400px;
+}
+li#Medium{
+	display: inline;
+	padding: 5px;
+	position: fixed;
+	top: 15px;
+	left: 660px;
+}
+li#Genre{
+	display: inline;
+	padding: 5px;
+	position: fixed;
+	top: 15px;
+	left: 815px;
+}
+li#About{
+	display: inline;
+	padding: 5px;
+	position: fixed;
+	top: 15px;
+	left: 955px;
+}
+img.logo{
+	width: 64px;
+	height: 54px;
+	float: left;
+	position: fixed;
+	top: 5px;
+	left: 25px;
+}
