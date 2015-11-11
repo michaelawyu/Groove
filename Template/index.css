@@ -1,8 +1,90 @@
+body {
+	background-image: url("Background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: left top;
+	background-size: 100%;
+}
+div.upperbody{
+	width: 900px;
+	height: 400px;
+	position: absolute;
+	top: 40%;
+	left: 52%;
+	margin-top: -200px;
+	margin-left: -450px;
+	padding: 0px;
+}
+div.lowerbody{
+	width: 900px;
+	height: 100px;
+	position: absolute;
+	top: 92%;
+	left: 52%;
+	margin-top: -50px;
+	margin-left: -450px;
+
+}
+h3.About{
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	color: white;
+	top: 20px;
+	left: 260px;
+	font-size: 14px;
+}
+h3.NextAbout{
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	color: white;
+	top: 38px;
+	left: 245px;
+	font-size: 14px;
+}
+h3.Guide{
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	color: white;
+	top: 210px;
+	left: 60px;
+}
+h1.Brand{
+	font-family: "The Last Call", Helvetica;
+	position: absolute; 
+	color: white;
+	top: 80px;
+	left: 250px;
+	font-size: 80px;
+}
+h3.Intro{
+	font-family: "PingFang SC", Helvetica;
+	color: white;
+	position: absolute;
+	top: 60px;
+	left: 365px;
+}
+h3.Button{
+	font-family: "PingFang SC", Helvetica;
+	position: absolute;
+	color: white;
+	top: 90%;
+	left: 45%;
+	width: 106px;
+	height: 27px;
+	border-width: 1px;
+	border-style: solid;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #29A329;
+	text-shadow: 1px 1px 3px #666666;
+	margin-top: -13.5px;
+	margin-left: -53px;
+}
 div#header{
-	background-color: hsl(10,0%,0%);
+	background-color: hsla(10,0%,0%,0.7);
 	padding: 10px;
 	width: 100%;
-	height: 7%;
+	height: 46px;
 	margin: 0px;
 	position: fixed;
 	top: 0px;
@@ -16,47 +98,51 @@ a.headerlink:visited{
 	text-decoration: none;
 	color: white;
 }
+li{
+	font-family: "PingFang SC", Helvetica;
+	font-size: 18px;
+}
 li#Music{
 	display: inline;
 	padding: 5px;
 	position: fixed;
-	top: 3%;
-	left: 10%
+	top: 15px;
+	left: 150px;
 }
 li#Artist{
 	display: inline;
 	padding: 5px;
 	position: fixed;
-	top: 3%;
-	left: 20%
+	top: 15px;
+	left: 275px;
 }
 li#PD{
 	display: inline;
 	padding: 5px;
 	position: fixed;
-	top: 3%;
-	left: 30%
+	top: 15px;
+	left: 400px;
 }
 li#Medium{
 	display: inline;
 	padding: 5px;
 	position: fixed;
-	top: 3%;
-	left: 40%
+	top: 15px;
+	left: 660px;
 }
 li#Genre{
 	display: inline;
 	padding: 5px;
 	position: fixed;
-	top: 3%;
-	left: 50%
+	top: 15px;
+	left: 815px;
 }
 li#About{
 	display: inline;
 	padding: 5px;
 	position: fixed;
-	top: 3%;
-	left: 60%
+	top: 15px;
+	left: 955px;
 }
 img.logo{
 	width: 64px;
