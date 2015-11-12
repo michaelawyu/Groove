@@ -36,10 +36,11 @@ def updatemMusicFilter():
 		cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
 		tmpList=cur.fetchall()
 		dataList=[]
-		numberList=[]
+		
 		for item in tmpList:
 			dataList.append(item[0])
 		dataSet.append(dataList)
+	numberList=[]
 	i=0
 	while i<len(filterList):
 		numberList.append(i)
