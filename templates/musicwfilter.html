@@ -43,12 +43,12 @@
 			{% for no in numberList %}
 				{
 					label:"TestDataset",
-            		fillColor: {{colorSet[no]}}+"0.2)",
-            		strokeColor: {{colorSet[no]}}+"1)",
-            		pointColor: {{colorSet[no]}}+"1)",
+            		fillColor: "{{colorSet[no]}}"+"0.2)",
+            		strokeColor: "{{colorSet[no]}}"+"1)",
+            		pointColor: "{{colorSet[no]}}"+"1)",
             		pointStrokeColor: "#fff",
             		pointHighlightFill: "#fff",
-            		pointHighlightStroke: {{colorSet[no]}}+"1)",
+            		pointHighlightStroke: "{{colorSet[no]}}"+"1)",
             		data: {{dataSet[no]}}
 				},
 			{% endfor %}
