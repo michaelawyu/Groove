@@ -6,6 +6,7 @@ engine = create_engine('sqlite:///testDB.db')
 app = Flask(__name__)
 filterList=[]
 dataList=[]
+tmpList=[1,]
 
 @app.route('/')
 def index():
