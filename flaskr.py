@@ -24,7 +24,9 @@ def updatemMusicFilter():
 @app.route('/music/add')
 def addFilterByMusicTitle():
 	cur=g.conn.execute('SELECT test.name FROM test')
-	titleList=cur.fetchall()
+	titleList=[]
+	for tuple in cur.fetchall():
+		titleList.append(tuple[1])
 	return render_template('addfiltermu.html',titleList=titleList)
 
 @app.route('/test')
