@@ -4,8 +4,10 @@ from sqlalchemy import *
 engine = create_engine('sqlite:///testDB.db')
 
 app = Flask(__name__)
-global filterList=[]
-global dataSet=[]
+global filterList
+filterList=[]
+global dataSet
+dataSet=[]
 
 @app.route('/')
 def index():
