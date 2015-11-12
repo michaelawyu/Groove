@@ -26,7 +26,7 @@ def updatemMusicFilter():
 	cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
 	tmpList=cur.fetchall()
 	for item in tmpList:
-		dataList.append(item[1])
+		dataList.append(item[0])
 	return render_template('test.html',testList=dataList)
 	#return render_template('musicwfilter.html',filterList=filterList)
 
