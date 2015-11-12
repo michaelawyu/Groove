@@ -20,7 +20,7 @@ def music():
 @app.route('/music', methods=['POST'])
 def updatemMusicFilter():
 	filterList=[]
-	filterList.append(request.form['checked'])
+	filterList.append(str(request.form['checked']))
 	return render_template('test.html',testList=filterList)
 
 @app.route('/music/add')
