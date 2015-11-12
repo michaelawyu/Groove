@@ -8,6 +8,8 @@ div#Chart{
 h2.Filter{
 	font-size: 20px;
 	margin-top: 9%;
+	font-family: Helvetica;
+	color: white;
 }
 canvas#ChartByMusicTitle{
 	width: 98%;
