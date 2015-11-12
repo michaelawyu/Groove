@@ -4,8 +4,8 @@ from sqlalchemy import *
 engine = create_engine('sqlite:///testDB.db')
 
 app = Flask(__name__)
-filterList=[]
-dataSet=[]
+global filterList=[]
+global dataSet=[]
 
 @app.route('/')
 def index():
@@ -17,12 +17,16 @@ def about():
 
 @app.route('/music')
 def music():
+	global filterList
+	global dataSet
 	filterList=[]
 	dataSet=[]
 	return render_template('music.html')
 
 @app.route('/music', methods=['POST'])
 def updatemMusicFilter():
+	global filterList
+	global dataSet
 	filterList.append(str(request.form['checked']))
 	cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
 	tmpList=cur.fetchall()
