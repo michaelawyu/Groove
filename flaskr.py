@@ -3,7 +3,6 @@ from sqlalchemy import *
 
 app = Flask(__name__)
 engine = create_engine('sqlite:////testDB.db')
-conn = engine.connect()
 
 @app.route('/')
 def index():
