@@ -8,6 +8,8 @@ global filterList
 filterList=[]
 global dataSet
 dataSet=[]
+global colorSet
+colorSet=['','','','','','']
 
 @app.route('/')
 def index():
@@ -29,14 +31,15 @@ def music():
 def updatemMusicFilter():
 	global filterList
 	global dataSet
-	filterList.append(str(request.form['checked']))
-	cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
-	tmpList=cur.fetchall()
-	dataList=[]
-	numberList=[]
-	for item in tmpList:
-		dataList.append(item[0])
-	dataSet.append(dataList)
+	if filterList.count(str(request.form['checked']))==0:
+		filterList.append(str(request.form['checked']))
+		cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
+		tmpList=cur.fetchall()
+		dataList=[]
+		numberList=[]
+		for item in tmpList:
+			dataList.append(item[0])
+		dataSet.append(dataList)
 	i=0
 	while i<len(filterList):
 		numberList.append(i)
