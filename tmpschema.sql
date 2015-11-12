@@ -1,2 +1,7 @@
 CREATE TABLE test (name text, value int);
 INSERT INTO test VALUES ("A",25);
+INSERT INTO test VALUES ("B",40);
+INSERT INTO test VALUES ("C",35);
+INSERT INTO test VALUES ("D",60);
+INSERT INTO test VALUES ("E",55);
+INSERT INTO test VALUES ("F",25);
