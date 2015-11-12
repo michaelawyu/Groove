@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request, redirect, url_for
 from sqlalchemy import *
 #'cy2415:345@w4111db1.cloudapp.net:5432/proj1part2'
 engine = create_engine('sqlite:///testDB.db')
@@ -19,7 +19,9 @@ def music():
 
 @app.route('/music', methods=['POST'])
 def updatemMusicFilter():
-	return render_template('music.html')
+	filterList=[]
+	filterList.append(request.form['checked'])
+	return filterList
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
