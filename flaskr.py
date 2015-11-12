@@ -1,8 +1,14 @@
-from flask import Flask, render_template
-from sqlalchemy import *
+from flask import Flask, render_template, g
+import sqlite3
+
+#configuration
+DATABASE = '/testDB.db'
 
 app = Flask(__name__)
-engine = create_engine('sqlite:////testDB.db')
+app.config.from_object(__name__)
+
+def connect_db():
+	return sqlite3.connect(app.config['DATABASE'])
 
 @app.route('/')
 def index():
@@ -18,8 +24,11 @@ def music():
 
 @app.route('/test')
 def test():
-	testList=engine.execute('SELECT test.value FROM test')
+	g.db=connect_db()
+	cur=g.db.execute('SELECT test.value FROM test')
+	testList=cur.fetchall()
 	return render_template('test.html',testList=testList)
+
 
 if __name__=='__main__':
 	app.debug=True
