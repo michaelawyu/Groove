@@ -53,7 +53,8 @@ def updatemMusicFilter():
 	while i<len(filterList):
 		numberList.append(i)
 		i=i+1
-	return render_template('musicwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+	return colorSet
+	#return render_template('musicwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
