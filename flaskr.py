@@ -1,14 +1,9 @@
 from flask import Flask, render_template, g
-import sqlite3
-
-#configuration
-DATABASE = '/testDB.db'
+from sqlalchemy import *
+#'cy2415:345@w4111db1.cloudapp.net:5432/proj1part2'
+engine = create_engine('sqlite:///testDB.db')
 
 app = Flask(__name__)
-app.config.from_object(__name__)
-
-def connect_db():
-	return sqlite3.connect(app.config['DATABASE'])
 
 @app.route('/')
 def index():
@@ -29,7 +24,14 @@ def test():
 	testList=cur.fetchall()
 	return render_template('test.html',testList=testList)
 
+@app.before_request
+def before_request():
+	g.conn=engine.connect()
 
+@app.teardown_request
+def teardown_request():
+	g.conn.close()
+	pass
 if __name__=='__main__':
 	app.debug=True
 	app.run(host='0.0.0.0')
