@@ -30,7 +30,7 @@ def before_request():
 @app.teardown_request
 def teardown_request():
 	g.conn.close()
-	pass
+	
 if __name__=='__main__':
 	app.debug=True
 	app.run(host='0.0.0.0')
