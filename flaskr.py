@@ -9,7 +9,14 @@ filterList=[]
 global dataSet
 dataSet=[]
 global colorSet
-colorSet=['','','','','','']
+colorSet=[
+"rgba(0,191,255,",
+"rgba(30,144,255,",
+"rgba(100,149,237,",
+"rgba(135,206,235,",
+"rgba(70,130,180,",
+"rgba(176,224,230,"
+]
 
 @app.route('/')
 def index():
@@ -31,6 +38,7 @@ def music():
 def updatemMusicFilter():
 	global filterList
 	global dataSet
+	global colorSet
 	if filterList.count(str(request.form['checked']))==0:
 		filterList.append(str(request.form['checked']))
 		cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
@@ -45,7 +53,7 @@ def updatemMusicFilter():
 	while i<len(filterList):
 		numberList.append(i)
 		i=i+1
-	return render_template('musicwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList)
+	return render_template('musicwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
