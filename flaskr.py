@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from sqlalchemy import *
+
 app = Flask(__name__)
-engine = create_engine('testDB.db')
+engine = create_engine(sqlite:////testDB.db)
 conn = engine.connect()
 
 @app.route('/')
@@ -18,7 +19,6 @@ def music():
 
 @app.route('/test')
 def test():
-
 	testList=[42,50,12,25,26,37]
 	return render_template('test.html',testList=testList)
 
