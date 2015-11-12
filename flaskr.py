@@ -39,7 +39,7 @@ def updatemMusicFilter():
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
-	cur=g.conn.execute('SELECT test.name FROM test')
+	cur=g.conn.execute('SELECT DISTINCT test.name FROM test')
 	titleList=[]
 	resultList=cur.fetchall()
 	for tuple in resultList:
