@@ -4,6 +4,7 @@ from sqlalchemy import *
 engine = create_engine('sqlite:///testDB.db')
 
 app = Flask(__name__)
+filterList=[]
 
 @app.route('/')
 def index():
@@ -15,11 +16,11 @@ def about():
 
 @app.route('/music')
 def music():
+	titleList=[]
 	return render_template('music.html')
 
 @app.route('/music', methods=['POST'])
 def updatemMusicFilter():
-	filterList=[]
 	filterList.append(str(request.form['checked']))
 	return render_template('musicwfilter.html',filterList=filterList)
 
