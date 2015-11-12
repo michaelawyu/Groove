@@ -19,8 +19,7 @@ def music():
 
 @app.route('/test')
 def test():
-	g.db=connect_db()
-	cur=g.db.execute('SELECT test.value FROM test')
+	cur=g.conn.execute('SELECT test.value FROM test')
 	testList=cur.fetchall()
 	return render_template('test.html',testList=testList)
 
