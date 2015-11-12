@@ -17,6 +17,16 @@ def about():
 def music():
 	return render_template('music.html')
 
+@app.route('/music', method=['POST'])
+def updatemMusicFilter():
+	return render_template('music.html')
+
+@app.route('/music/add')
+def addFilterByMusicTitle():
+	cur.g.conn.execute('SELECT test.name FROM test')
+	titleList=cur.fetchall()
+	return render_template('addfiltermu.html',titleList=titleList)
+
 @app.route('/test')
 def test():
 	cur=g.conn.execute('SELECT test.value FROM test')
