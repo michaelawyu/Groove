@@ -23,7 +23,8 @@ def music():
 @app.route('/music', methods=['POST'])
 def updatemMusicFilter():
 	filterList.append(str(request.form['checked']))
-	tmpList=g.conn.execute('SELECT test.value FROM test')
+	cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="A"')
+	tmpList=cur.fetchall()
 	return render_template('test.html',testList=tmpList)
 	#return render_template('musicwfilter.html',filterList=filterList)
 
