@@ -5,6 +5,7 @@ engine = create_engine('sqlite:///testDB.db')
 
 app = Flask(__name__)
 filterList=[]
+dataList=[]
 
 @app.route('/')
 def index():
@@ -22,7 +23,9 @@ def music():
 @app.route('/music', methods=['POST'])
 def updatemMusicFilter():
 	filterList.append(str(request.form['checked']))
-	return render_template('musicwfilter.html',filterList=filterList)
+	tmpList=g.conn.execute('SELECT test.value FROM test WHERE test.name=request.from['checked']')
+	render_template('test.html',testList=tmpList)
+	#return render_template('musicwfilter.html',filterList=filterList)
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
