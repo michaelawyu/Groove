@@ -38,17 +38,21 @@
 	<script type="text/javascript">
 		var ctx = document.getElementById("ChartByMusicTitle").getContext("2d");
 		var data = {
-			labels: ["A","B","C","D","E","F"],
-			datasets: [{
-				label:"TestDataset",
-            	fillColor: "rgba(220,220,220,0.2)",
-            	strokeColor: "rgba(220,220,220,1)",
-            	pointColor: "rgba(220,220,220,1)",
-            	pointStrokeColor: "#fff",
-            	pointHighlightFill: "#fff",
-            	pointHighlightStroke: "rgba(220,220,220,1)",
-            	data: [25,30,40,50,60,15]
-			}]
+			labels: ["Nov 9th","Nov 10th","Nov 11st","Nov 12nd","Nov 13rd","Nov 14th"],
+			datasets: [
+			{% for no in numberList %}
+				{
+					label:"TestDataset",
+            		fillColor: "rgba(220,220,220,0.2)",
+            		strokeColor: "rgba(220,220,220,1)",
+            		pointColor: "rgba(220,220,220,1)",
+            		pointStrokeColor: "#fff",
+            		pointHighlightFill: "#fff",
+            		pointHighlightStroke: "rgba(220,220,220,1)",
+            		data: {{dataSet[no]}}
+				},
+			{% endfor %}
+			]
 
 		}
 		var myNewChart = new Chart(ctx).Line(data);
