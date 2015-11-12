@@ -28,7 +28,7 @@ def addFilterByMusicTitle():
 	resultList=cur.fetchall()
 	#for tuple in resultList:
 	#	titleList.append(tuple[1])
-	return resultList
+	return render_template('test.html',testList=resultList)
 	#return render_template('addfiltermu.html',titleList=titleList)
 
 @app.route('/test')
