@@ -28,7 +28,7 @@ def before_request():
 	g.conn=engine.connect()
 
 @app.teardown_request
-def teardown_request():
+def teardown_request(exception):
 	if g.conn is not None:
 		g.conn.close()
 
