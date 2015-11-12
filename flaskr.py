@@ -17,7 +17,7 @@ def about():
 def music():
 	return render_template('music.html')
 
-@app.route('/music', method=['POST'])
+@app.route('/music', methods=['POST'])
 def updatemMusicFilter():
 	return render_template('music.html')
 
