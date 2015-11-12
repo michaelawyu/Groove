@@ -21,7 +21,7 @@ def music():
 def updatemMusicFilter():
 	filterList=[]
 	filterList.append(str(request.form['checked']))
-	return render_template('test.html',testList=filterList)
+	return render_template('musicwfilter.html',filterList=filterList)
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
