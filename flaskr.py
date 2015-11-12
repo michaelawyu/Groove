@@ -28,6 +28,8 @@ def addFilterByMusicTitle():
 	resultList=cur.fetchall()
 	for tuple in resultList:
 		titleList.append(tuple[0])
+	for item in titleList:
+		item=item[2:(len(item)-1)]
 	return render_template('test.html',testList=titleList)
 	#return render_template('addfiltermu.html',titleList=titleList)
 
