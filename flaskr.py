@@ -21,7 +21,7 @@ def music():
 def updatemMusicFilter():
 	filterList=[]
 	filterList.append(request.form['checked'])
-	return filterList
+	return render_template('test.html',testList=filterList)
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
@@ -34,8 +34,7 @@ def addFilterByMusicTitle():
 
 @app.route('/test')
 def test():
-	cur=g.conn.execute('SELECT test.value FROM test')
-	testList=cur.fetchall()
+	testList=[0,0,0,0,0,0]
 	return render_template('test.html',testList=testList)
 
 @app.before_request
