@@ -18,7 +18,7 @@ def music():
 
 @app.route('/test')
 def test():
-	testList=[42,50,12,25,26,37]
+	testList=engine.execute('SELECT test.value FROM test')
 	return render_template('test.html',testList=testList)
 
 if __name__=='__main__':
