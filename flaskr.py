@@ -1,7 +1,7 @@
 from flask import Flask, render_template, g, request, redirect, url_for
 from sqlalchemy import *
-#'cy2415:345@w4111db1.cloudapp.net:5432/proj1part2'
-engine = create_engine('cy2415:345@w4111db1.cloudapp.net:5432/proj1part2')
+#'postgresql://cy2415:345@w4111db1.cloudapp.net:5432/proj1part2'
+engine = create_engine('postgresql://cy2415:345@w4111db1.cloudapp.net:5432/proj1part2')
 
 app = Flask(__name__)
 global filterList
