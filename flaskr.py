@@ -27,7 +27,7 @@ def about():
 	return render_template('about.html')
 
 @app.route('/pd')
-def artist():
+def pd():
 	global filterList
 	global dataSet
 	filterList=[]
@@ -35,7 +35,7 @@ def artist():
 	return render_template('pd.html')
 
 @app.route('/pd', methods=['POST'])
-def updateArtistFilter():
+def updatePDFilter():
 	global filterList
 	global dataSet
 	global colorSet
@@ -43,7 +43,7 @@ def updateArtistFilter():
 		muTitleList=[]
 		someOfRanks=[0,0,0,0,0,0]
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT Music.mid FROM Music, CREATED_BY, Artist WHERE Music.mid = CREATED_BY.mid AND CREATED_BY.auid = ARTIST.auid AND Artist.name='+"'"+str(request.form['checked'])+"'")
+		cur=g.conn.execute('SELECT Production_Company.puid FROM Music, Production_Company WHERE Music.puid = Production_Company.puid AND Production_Company.name='+"'"+str(request.form['checked'])+"'")
 		tmplist2=cur.fetchall()
 		for item in tmplist2:
 			muTitleList.append(item[0])
@@ -65,8 +65,8 @@ def updateArtistFilter():
 	return render_template('pdwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/pd/add')
-def addFilterByArtist():
-	cur=g.conn.execute('SELECT DISTINCT Artist.name FROM Artist')
+def addFilterByPD():
+	cur=g.conn.execute('SELECT DISTINCT Production_Company.name FROM Production_Company')
 	titleList=[]
 	resultList=cur.fetchall()
 	for tuple in resultList:
@@ -90,7 +90,7 @@ def updateArtistFilter():
 		muTitleList=[]
 		someOfRanks=[0,0,0,0,0,0]
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT Music.mid FROM Music, CREATED_BY, Artist WHERE Music.mid = CREATED_BY.mid AND CREATED_BY.auid = ARTIST.auid AND Artist.name='+"'"+str(request.form['checked'])+"'")
+		cur=g.conn.execute('SELECT Music.mid FROM Music, CREATED_BY, Artist WHERE Music.mid = CREATED_BY.mid AND CREATED_BY.auid = Artist.auid AND Artist.name='+"'"+str(request.form['checked'])+"'")
 		tmplist2=cur.fetchall()
 		for item in tmplist2:
 			muTitleList.append(item[0])
