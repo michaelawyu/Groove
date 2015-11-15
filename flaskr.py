@@ -55,17 +55,14 @@ def updateArtistFilter():
 				someOfRanks[i]=someOfRanks[i]+tmplist2[i][0]
 				i=i+1
 		
-		dataSet.append(someOfRanks)	
-
-		return render_template('test.html',testList=dataSet)
-
-
-	#numberList=[]
-	#i=0
-	#while i<len(filterList):
-	#	numberList.append(i)
-	#	i=i+1
-	#return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+		dataSet.append(someOfRanks)
+	
+	numberList=[]
+	i=0
+	while i<len(filterList):
+		numberList.append(i)
+		i=i+1
+	return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/artist/add')
 def addFilterByArtist():
