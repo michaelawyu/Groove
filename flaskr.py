@@ -26,6 +26,45 @@ def index():
 def about():
 	return render_template('about.html')
 
+@app.route('/artist')
+def artist():
+	global filterList
+	global dataSet
+	filterList=[]
+	dataSet=[]
+	return render_template('artist.html')
+
+@app.route('/artist', methods=['POST'])
+def updateArtistFilter():
+	global filterList
+	global dataSet
+	global colorSet
+	if filterList.count(str(request.form['checked']))==0:
+		filterList.append(str(request.form['checked']))
+		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.name='+"'"+str(request.form['checked'])+"'")
+
+		tmpList=cur.fetchall()
+		dataList=[]
+		
+		for item in tmpList:
+			dataList.append(item[0])
+		dataSet.append(dataList)
+	numberList=[]
+	i=0
+	while i<len(filterList):
+		numberList.append(i)
+		i=i+1
+	return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+
+@app.route('/artist/add')
+def addFilterByArtist():
+	cur=g.conn.execute('SELECT DISTINCT Music.name FROM Music')
+	titleList=[]
+	resultList=cur.fetchall()
+	for tuple in resultList:
+		titleList.append(str(tuple[0]))
+	return render_template('addfilterar.html',titleList=titleList)
+
 @app.route('/music')
 def music():
 	global filterList
