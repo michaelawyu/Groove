@@ -52,7 +52,7 @@ def updateArtistFilter():
 			tmplist2=cur.fetchall()
 			i=0
 			while i<6:
-				someOfRanks[i]=someOfRanks[i]+tmplist2[i]
+				someOfRanks[i]=someOfRanks[i]+tmplist2[i][0]
 				i=i+1
 		
 		dataSet.append(someOfRanks)	
