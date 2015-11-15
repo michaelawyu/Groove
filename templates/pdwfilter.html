@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Groove: Rank By Artist</title>
-	<link rel="stylesheet" type="text/css" href="../static/artist.css">
+	<title>Groove: Rank By Production Company</title>
+	<link rel="stylesheet" type="text/css" href="../static/pdwfilter.css">
 </head>
 <body>
 	<script type="text/javascript" src="..\static\Chart.js"></script>
@@ -17,11 +17,21 @@
 			<li id="About"><a class="headerlink" href="/about">About</a></li>
 		</ul>
 	</div>
+
 	<div id="Selector">
-		<div class="Option"><a class="selectorlink" href="/artist/add">
-			<img src="../static/plus.png" id="Plus">
-		</div>
+		<a class="selectorlink" href="/music/add">
+			<div class="Option">
+				<img src="../static/plus.png" id="Plus">
+			</div>
+		</a>
+			{% for item in filterList %}
+				<div class="Option">
+					<h2 class="Filter">{{item}}</h2>
+				</div>
+			{% endfor %}
+		
 	</div>
+
 	<div id="Chart">
 		<canvas id="ChartByMusicTitle"></canvas>
 	</div>
@@ -29,16 +39,20 @@
 		var ctx = document.getElementById("ChartByMusicTitle").getContext("2d");
 		var data = {
 			labels: ["Nov 9th","Nov 10th","Nov 11st","Nov 12nd","Nov 13rd","Nov 14th"],
-			datasets: [{
-				label:"TestDataset",
-            	fillColor: "rgba(220,220,220,"+"0.2)",
-            	strokeColor: "rgba(220,220,220,0.9)",
-            	pointColor: "rgba(220,220,220,0.9)",
-            	pointStrokeColor: "#fff",
-            	pointHighlightFill: "#fff",
-            	pointHighlightStroke: "rgba(220,220,220)",
-            	data: [50,50,50,50,50,50]
-			},]
+			datasets: [
+			{% for no in numberList %}
+				{
+					label:"TestDataset",
+            		fillColor: "{{colorSet[no]}}"+"0.2)",
+            		strokeColor: "{{colorSet[no]}}"+"1)",
+            		pointColor: "{{colorSet[no]}}"+"1)",
+            		pointStrokeColor: "#fff",
+            		pointHighlightFill: "#fff",
+            		pointHighlightStroke: "{{colorSet[no]}}"+"1)",
+            		data: {{dataSet[no]}}
+				},
+			{% endfor %}
+			]
 
 		}
 		var myNewChart = new Chart(ctx).Line(data);
