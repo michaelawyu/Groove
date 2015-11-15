@@ -41,20 +41,23 @@ def updateArtistFilter():
 	global colorSet
 	if filterList.count(str(request.form['checked']))==0:
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.name='+"'"+str(request.form['checked'])+"'")
+		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music, CREATED_BY, Artist WHERE RANK.mid = Music.mid AND Music.mid = CREATED_BY.mid AND CREATED_BY.auid = ARTIST.auid AND Artist.name='+"'"+str(request.form['checked'])+"'")
 
 		tmpList=cur.fetchall()
 		dataList=[]
 		
 		for item in tmpList:
 			dataList.append(item[0])
-		dataSet.append(dataList)
-	numberList=[]
-	i=0
-	while i<len(filterList):
-		numberList.append(i)
-		i=i+1
-	return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+
+		return render_template('test.html',testList=dataList)
+
+		#dataSet.append(dataList)
+	#numberList=[]
+	#i=0
+	#while i<len(filterList):
+	#	numberList.append(i)
+	#	i=i+1
+	#return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/artist/add')
 def addFilterByArtist():
