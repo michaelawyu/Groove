@@ -48,7 +48,6 @@ def updatePDFilter():
 		for item in tmplist2:
 			muTitleList.append(item[0])
 
-		return
 
 		for item in muTitleList:
 			cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.mid='+"'"+str(item)+"'")
@@ -65,6 +64,7 @@ def updatePDFilter():
 	while i<len(filterList):
 		numberList.append(i)
 		i=i+1
+
 	return render_template('pdwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 
