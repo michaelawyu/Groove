@@ -13,7 +13,7 @@
 			{% for item in titleList %}
 					<form action="http://testenvratros.cloudapp.net:10000/music" method="post">
 						<button>{{item}}</button>
-						<input type="hidden" name="checked" value={{item}}>   
+						<input type="hidden" name="checked" value="{{item}}">   
 					</form>
 			{% endfor %}
 		</div>
