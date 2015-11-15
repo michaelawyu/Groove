@@ -1,7 +1,7 @@
 from flask import Flask, render_template, g, request, redirect, url_for
 from sqlalchemy import *
 #'cy2415:345@w4111db1.cloudapp.net:5432/proj1part2'
-engine = create_engine('sqlite:///testDB.db')
+engine = create_engine('cy2415:345@w4111db1.cloudapp.net:5432/proj1part2')
 
 app = Flask(__name__)
 global filterList
@@ -41,7 +41,7 @@ def updatemMusicFilter():
 	global colorSet
 	if filterList.count(str(request.form['checked']))==0:
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT test.value FROM test WHERE test.name="'+str(request.form['checked'])+'"')
+		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.name="'+str(request.form['checked'])+'"')
 		tmpList=cur.fetchall()
 		dataList=[]
 		
@@ -57,7 +57,7 @@ def updatemMusicFilter():
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
-	cur=g.conn.execute('SELECT DISTINCT test.name FROM test')
+	cur=g.conn.execute('SELECT DISTINCT Music.name FROM Music')
 	titleList=[]
 	resultList=cur.fetchall()
 	for tuple in resultList:

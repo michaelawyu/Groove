@@ -1,8 +1,0 @@
-INSERT INTO test VALUES ("B",50);
-INSERT INTO test VALUES ("B",3);
-INSERT INTO test VALUES ("B",17);
-INSERT INTO test VALUES ("B",96);
-INSERT INTO test VALUES ("B",97);
-
-
-
