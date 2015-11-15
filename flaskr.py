@@ -40,18 +40,26 @@ def updateArtistFilter():
 	global dataSet
 	global colorSet
 	if filterList.count(str(request.form['checked']))==0:
+		muTitleList=[]
+		someOfRanks=[0,0,0,0,0,0]
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music, CREATED_BY, Artist WHERE RANK.mid = Music.mid AND Music.mid = CREATED_BY.mid AND CREATED_BY.auid = ARTIST.auid AND Artist.name='+"'"+str(request.form['checked'])+"'")
-
-		tmpList=cur.fetchall()
-		dataList=[]
+		cur=g.conn.execute('SELECT Music.mid FROM Music, CREATED_BY, Artist WHERE Music.mid = CREATED_BY.mid AND CREATED_BY.auid = ARTIST.auid AND Artist.name='+"'"+str(request.form['checked'])+"'")
+		tmplist2=cur.fetchall()
+		for item in tmplist2:
+			muTitleList.append(item[0])
+		for item in muTitleList:
+			cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.mid='+"'"+str(item)+"'")
+			tmplist2=cur.fetchall()
+			i=0
+			while i<6:
+				someOfRanks[i]=someOfRanks[i]+tmplist2[i]
+				i=i+1
 		
-		for item in tmpList:
-			dataList.append(item[0])
+		dataSet.append(someOfRanks)	
 
-		return render_template('test.html',testList=dataList)
+		return render_template('test.html',testList=dataSet)
 
-		#dataSet.append(dataList)
+
 	#numberList=[]
 	#i=0
 	#while i<len(filterList):
