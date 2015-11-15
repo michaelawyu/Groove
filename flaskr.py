@@ -43,7 +43,7 @@ def updatePDFilter():
 		muTitleList=[]
 		someOfRanks=[0,0,0,0,0,0]
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT Production_Company.puid FROM Music, Production_Company WHERE Music.puid = Production_Company.puid AND Production_Company.name='+"'"+str(request.form['checked'])+"'")
+		cur=g.conn.execute('SELECT Music.mid FROM Music, Production_Company WHERE Music.puid = Production_Company.puid AND Production_Company.name='+"'"+str(request.form['checked'])+"'")
 		tmplist2=cur.fetchall()
 		for item in tmplist2:
 			muTitleList.append(item[0])
