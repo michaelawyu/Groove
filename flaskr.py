@@ -49,13 +49,13 @@ def updatemMusicFilter():
 		for item in tmpList:
 			dataList.append(item[0])
 		dataSet.append(dataList)
-		return render_template('test.html',testList=dataList);
-	#numberList=[]
-	#i=0
-	#while i<len(filterList):
-	#	numberList.append(i)
-	#	i=i+1
+	numberList=[]
+	i=0
+	while i<len(filterList):
+		numberList.append(i)
+		i=i+1
 	#return render_template('musicwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+	return render_template('test.html',testList=dataSet)
 
 @app.route('/music/add')
 def addFilterByMusicTitle():
