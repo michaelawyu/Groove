@@ -49,7 +49,7 @@ def updatemMusicFilter():
 		for item in tmpList:
 			dataList.append(item[0])
 		dataSet.append(dataList)
-		return dataList;
+		return render_template('test.html',testList=dataList);
 	#numberList=[]
 	#i=0
 	#while i<len(filterList):
