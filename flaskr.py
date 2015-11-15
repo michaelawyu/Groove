@@ -41,7 +41,7 @@ def updatemMusicFilter():
 	global colorSet
 	if filterList.count(str(request.form['checked']))==0:
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.name="'+str(request.form['checked'])+'"')
+		cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.name='+str(request.form['checked'])+'' ')
 		tmpList=cur.fetchall()
 		dataList=[]
 		
