@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select A Filter</title>
+	<link rel="stylesheet" type="text/css" href="../static/addfilterme.css">
+</head>
+<body>
+	<div id="MainFrame">
+		<div id="Title">
+			<h1 id="Title">SELECT A FILTER</h1>
+		</div>
+		<div id="Options">
+			{% for item in titleList %}
+					<form action="http://testenvratros.cloudapp.net:10000/medium" method="post">
+						<button>{{item}}</button>
+						<input type="hidden" name="checked" value="{{item}}">   
+					</form>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

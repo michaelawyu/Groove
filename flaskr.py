@@ -26,6 +26,53 @@ def index():
 def about():
 	return render_template('about.html')
 
+@app.route('/medium')
+def artist():
+	global filterList
+	global dataSet
+	filterList=[]
+	dataSet=[]
+	return render_template('medium.html')
+
+@app.route('/medium', methods=['POST'])
+def updateArtistFilter():
+	global filterList
+	global dataSet
+	global colorSet
+	if filterList.count(str(request.form['checked']))==0:
+		muTitleList=[]
+		someOfRanks=[0,0,0,0,0,0]
+		filterList.append(str(request.form['checked']))
+		cur=g.conn.execute('SELECT Music.mid FROM Music, STORED_ON, Medium WHERE Music.mid = BELONGS_TO.mid AND BELONGS_TO.medium_type = Medium.medium_type AND Medium.medium_type='+"'"+str(request.form['checked'])+"'")
+		tmplist2=cur.fetchall()
+		for item in tmplist2:
+			muTitleList.append(item[0])
+		for item in muTitleList:
+			cur=g.conn.execute('SELECT RANK.rank_number FROM RANK, Music WHERE RANK.mid = Music.mid AND Music.mid='+"'"+str(item)+"'")
+			tmplist2=cur.fetchall()
+			i=0
+			while i<6:
+				someOfRanks[i]=someOfRanks[i]+tmplist2[i][0]
+				i=i+1
+		
+		dataSet.append(someOfRanks)
+	
+	numberList=[]
+	i=0
+	while i<len(filterList):
+		numberList.append(i)
+		i=i+1
+	return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+
+@app.route('/medium/add')
+def addFilterByMedium():
+	cur=g.conn.execute('SELECT DISTINCT Medium.medium_type FROM Artist')
+	titleList=[]
+	resultList=cur.fetchall()
+	for tuple in resultList:
+		titleList.append(str(tuple[0]))
+	return render_template('addfilterme.html',titleList=titleList)
+
 @app.route('/pd')
 def pd():
 	global filterList
