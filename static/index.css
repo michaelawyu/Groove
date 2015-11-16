@@ -1,3 +1,11 @@
+@font-face {
+	font-family: 'PingFang SC';
+	src: url('PingFang.ttf');
+}
+@font-face {
+	font-family: 'The Last Call';
+	src: url('TheLastCall.ttf');
+}
 body {
 	background-image: url("Background.jpg");
 	background-repeat: no-repeat;
