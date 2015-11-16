@@ -65,7 +65,7 @@ def updateGenreFilter():
 	return render_template('genrewfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/genre/add')
-def addFilterByMedium():
+def addFilterByGenre():
 	cur=g.conn.execute('SELECT DISTINCT Genre.name FROM Genre')
 	titleList=[]
 	resultList=cur.fetchall()
