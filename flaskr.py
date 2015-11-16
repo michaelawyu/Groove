@@ -66,7 +66,7 @@ def updateMediumFilter():
 
 @app.route('/medium/add')
 def addFilterByMedium():
-	cur=g.conn.execute('SELECT DISTINCT Medium.medium_type FROM Artist')
+	cur=g.conn.execute('SELECT DISTINCT Medium.medium_type FROM Medium')
 	titleList=[]
 	resultList=cur.fetchall()
 	for tuple in resultList:
