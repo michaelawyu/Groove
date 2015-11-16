@@ -27,7 +27,7 @@ def about():
 	return render_template('about.html')
 
 @app.route('/medium')
-def artist():
+def medium():
 	global filterList
 	global dataSet
 	filterList=[]
@@ -35,7 +35,7 @@ def artist():
 	return render_template('medium.html')
 
 @app.route('/medium', methods=['POST'])
-def updateArtistFilter():
+def updateMediumFilter():
 	global filterList
 	global dataSet
 	global colorSet
@@ -62,7 +62,7 @@ def updateArtistFilter():
 	while i<len(filterList):
 		numberList.append(i)
 		i=i+1
-	return render_template('artistwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
+	return render_template('mediumwfilter.html',filterList=filterList,dataSet=dataSet,numberList=numberList,colorSet=colorSet)
 
 @app.route('/medium/add')
 def addFilterByMedium():
