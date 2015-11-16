@@ -43,7 +43,7 @@ def updateMediumFilter():
 		muTitleList=[]
 		someOfRanks=[0,0,0,0,0,0]
 		filterList.append(str(request.form['checked']))
-		cur=g.conn.execute('SELECT Music.mid FROM Music, STORED_ON, Medium WHERE Music.mid = BELONGS_TO.mid AND BELONGS_TO.medium_type = Medium.medium_type AND Medium.medium_type='+"'"+str(request.form['checked'])+"'")
+		cur=g.conn.execute('SELECT Music.mid FROM Music, STORED_ON, Medium WHERE Music.mid = STORED_ON.mid AND STORED_ON.medium_type = Medium.medium_type AND Medium.medium_type='+"'"+str(request.form['checked'])+"'")
 		tmplist2=cur.fetchall()
 		for item in tmplist2:
 			muTitleList.append(item[0])
