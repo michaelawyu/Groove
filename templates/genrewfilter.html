@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Groove: Rank By Medium</title>
+	<link rel="stylesheet" type="text/css" href="../static/mediumwfilter.css">
+</head>
+<body>
+	<script type="text/javascript" src="..\static\Chart.js"></script>
+	<div id="header">
+		<img src="../static/logo.png" class="logo" alt="Logo of Groove">
+		<ul>
+			<li id="Music"><a class="headerlink" href="/music">Music</a></li>
+			<li id="Artist"><a class="headerlink" href="/artist">Artist</a></li>
+			<li id="PD"><a class="headerlink" href="/pd">Production Company</a></li>
+			<li id="Medium"><a class="headerlink" href="/medium">Medium</a></li>
+			<li id="Genre"><a class="headerlink" href="/genre">Genre</a></li>
+			<li id="About"><a class="headerlink" href="/about">About</a></li>
+		</ul>
+	</div>
+
+	<div id="Selector">
+		<a class="selectorlink" href="/genre/add">
+			<div class="Option">
+				<img src="../static/plus.png" id="Plus">
+			</div>
+		</a>
+			{% for item in filterList %}
+				<div class="Option">
+					<h2 class="Filter">{{item}}</h2>
+				</div>
+			{% endfor %}
+		
+	</div>
+
+	<div id="Chart">
+		<canvas id="ChartByMusicTitle"></canvas>
+	</div>
+	<script type="text/javascript">
+		var ctx = document.getElementById("ChartByMusicTitle").getContext("2d");
+		var data = {
+			labels: ["Nov 9th","Nov 10th","Nov 11st","Nov 12nd","Nov 13rd","Nov 14th"],
+			datasets: [
+			{% for no in numberList %}
+				{
+					label:"TestDataset",
+            		fillColor: "{{colorSet[no]}}"+"0.2)",
+            		strokeColor: "{{colorSet[no]}}"+"1)",
+            		pointColor: "{{colorSet[no]}}"+"1)",
+            		pointStrokeColor: "#fff",
+            		pointHighlightFill: "#fff",
+            		pointHighlightStroke: "{{colorSet[no]}}"+"1)",
+            		data: {{dataSet[no]}}
+				},
+			{% endfor %}
+			]
+
+		}
+		var myNewChart = new Chart(ctx).Line(data);
+
+	</script>
+</body>
+</html>
